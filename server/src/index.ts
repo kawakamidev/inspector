@@ -17,12 +17,14 @@ import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import express from "express";
 import { findActualExecutable } from "spawn-rx";
 import mcpProxy from "./mcpProxy.js";
+import { extractEnv } from "./utils/extractEnv.js";
 
 const SSE_HEADERS_PASSTHROUGH = ["authorization"];
 
 const defaultEnvironment = {
   ...getDefaultEnvironment(),
   ...(process.env.MCP_ENV_VARS ? JSON.parse(process.env.MCP_ENV_VARS) : {}),
+  ...extractEnv(process.env),
 };
 
 const { values } = parseArgs({

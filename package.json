@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
     "dev:windows": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev:windows",
-    "test": "npm run prettier-check && cd client && npm test",
+    "test": "npm run prettier-check && cd client && npm test && cd ../server && npm test",
     "build-server": "cd server && npm run build",
     "build-client": "cd client && npm run build",
     "build": "npm run build-server && npm run build-client",
@@ -38,7 +38,9 @@
   "dependencies": {
     "@modelcontextprotocol/inspector-client": "^0.8.1",
     "@modelcontextprotocol/inspector-server": "^0.8.1",
+    "@types/lodash": "^4.17.16",
     "concurrently": "^9.0.1",
+    "lodash": "^4.17.21",
     "shell-quote": "^1.8.2",
     "spawn-rx": "^5.1.2",
     "ts-node": "^10.9.2"
